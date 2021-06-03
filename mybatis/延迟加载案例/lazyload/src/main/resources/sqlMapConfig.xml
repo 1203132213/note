@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--所有配置的顺序不能颠倒-->
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--开启全局的懒加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--关闭立即加载，其实不用配置，默认为false-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!--开启Mybatis的sql执行相关信息打印-->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+    <environments default="test">
+        <environment id="test">
+            <!--配置事务-->
+            <transactionManager type="jdbc"></transactionManager>
+            <!--配置连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test"/>
+                <property name="username" value="root"/>
+                <property name="password" value="admin123"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--<mapper resource="UserMapper.xml"></mapper>-->
+        <mapper class="com.lazyload.mapper.UserMapper"></mapper>
+    </mappers>
+
+</configuration>
